@@ -1,6 +1,7 @@
 import 'package:financeiro/models/transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 main() => runApp(const ExpensesApp());
 
@@ -21,9 +22,9 @@ class MyHomePage extends StatelessWidget {
 
   final _transactions = [
     Transaction(
-        id: 't1', title: 'Novo Tênis', value: 310.76, date: DateTime.now()),
+        id: 't1', title: 'Novo Tênis', value: 310.762, date: DateTime.now()),
     Transaction(
-        id: 't2', title: 'Conta de luz', value: 200.76, date: DateTime.now())
+        id: 't2', title: 'Conta de luz', value: 200.762, date: DateTime.now())
   ];
 
   @override
@@ -53,7 +54,7 @@ class MyHomePage extends StatelessWidget {
                                   Border.all(color: Colors.purple, width: 2)),
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            element.value.toString(),
+                            'R\$ ${element.value.toStringAsFixed(2)}',
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -68,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           Text(
-                            element.date.toString(),
+                            DateFormat('d MMM y').format(element.date),
                             style: TextStyle(color: Colors.grey[600]),
                           )
                         ],
