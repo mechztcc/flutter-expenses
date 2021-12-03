@@ -10,6 +10,7 @@ class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
@@ -41,7 +42,25 @@ class MyHomePage extends StatelessWidget {
             Column(
               children: _transactions.map((element) {
                 return Card(
-                  child: Text(element.title),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.black, width: 2)),
+                          padding: const EdgeInsets.all(10),
+                          child: Text(element.value.toString())),
+                      Column(
+                        children: [
+                          Text(element.title),
+                          Text(element.date.toString())
+                        ],
+                      )
+                    ],
+                  ),
                 );
               }).toList(),
             ),
