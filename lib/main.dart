@@ -20,6 +20,9 @@ class ExpensesApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
+  String title = '';
+  String value = '';
+
   final _transactions = [
     Transaction(
         id: 't1', title: 'Novo Tênis', value: 310.762, date: DateTime.now()),
@@ -84,12 +87,14 @@ class MyHomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
-                    const TextField(
+                    TextField(
+                      onChanged: (value) => {title = value},
                       decoration: InputDecoration(
                         labelText: 'Título',
                       ),
                     ),
-                    const TextField(
+                    TextField(
+                      onChanged: (value) => {this.value = value},
                       decoration: InputDecoration(
                         labelText: 'Valor (R\$)',
                       ),
@@ -99,7 +104,10 @@ class MyHomePage extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           child: const Text('Nova transação'),
-                          onPressed: () {},
+                          onPressed: () {
+                            print(title);
+                            print(value);
+                          },
                         ),
                       ],
                     )
