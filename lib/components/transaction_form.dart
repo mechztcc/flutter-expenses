@@ -6,7 +6,7 @@ class TransactionForm extends StatelessWidget {
   final _titleController = TextEditingController();
   final _valueController = TextEditingController();
 
-  final void Function(String, double) onSubmit;
+  final void Function(String, double, DateTime) onSubmit;
 
   TransactionForm({Key? key, required this.onSubmit}) : super(key: key);
 
@@ -14,10 +14,12 @@ class TransactionForm extends StatelessWidget {
     final title = _titleController.text;
     final value = double.tryParse(_valueController.text) ?? 0;
 
+    DateTime _selectedDate = DateTime.now();
+
     if (title.isEmpty || value <= 0) {
       return;
     } else {
-      onSubmit(title, value);
+      onSubmit(title, value, _selectedDate);
     }
   }
 
