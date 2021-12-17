@@ -14,12 +14,12 @@ class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
-              .copyWith(secondary: Colors.amber)),
-    );
+        debugShowCheckedModeBanner: false,
+        home: MyHomePage(),
+        theme: ThemeData(
+            primaryColor: Colors.deepPurple,
+            colorScheme: ColorScheme.fromSwatch(accentColor: Colors.amber),
+            fontFamily: 'Quicksand'));
   }
 }
 
@@ -64,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Despesas Pessoais'),
         actions: [
           IconButton(

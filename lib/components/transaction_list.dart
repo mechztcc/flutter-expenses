@@ -30,10 +30,10 @@ class TransactionList extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: Text(
                           'R\$ ${tr.value.toStringAsFixed(2)}',
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
-                              color: Colors.purple),
+                              color: Theme.of(context).primaryColor),
                         )),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
