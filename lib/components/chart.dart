@@ -34,6 +34,7 @@ class Chart extends StatelessWidget {
       elevation: 6,
       margin: EdgeInsets.all(20),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: groupedTransactions.map((tr) {
           return ChartBar(
               label: tr['day'].toString(), value: tr['value'], percentage: 0);
