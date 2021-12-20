@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
@@ -16,6 +17,8 @@ class _TransactionFormState extends State<TransactionForm> {
 
   final _valueController = TextEditingController();
 
+  DateTime _selectedDate = DateTime(2020);
+
   _submitForm() {
     final title = _titleController.text;
     final value = double.tryParse(_valueController.text) ?? 0;
@@ -27,6 +30,23 @@ class _TransactionFormState extends State<TransactionForm> {
     } else {
       widget.onSubmit(title, value, _selectedDate);
     }
+  }
+
+  _showDatePicker() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2020),
+            lastDate: DateTime.now())
+        .then((value) {
+      if (value == null) {
+        return;
+      } else {
+        setState(() {
+          _selectedDate = value;
+        });
+      }
+    });
   }
 
   @override
@@ -52,11 +72,32 @@ class _TransactionFormState extends State<TransactionForm> {
                 labelText: 'Valor (R\$)',
               ),
             ),
+            Container(
+              height: 70,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    _selectedDate == null
+                        ? 'Nenhuma data selecionada'
+                        : DateFormat('dd/MM/y').format(_selectedDate),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    onPressed: _showDatePicker,
+                    icon: const Icon(Icons.date_range),
+                    color: Theme.of(context).primaryColor,
+                  )
+                ],
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  child: const Text('Nova transação'),
+                  child: const Text(
+                    'Nova transação',
+                  ),
                   onPressed: () => {_submitForm()},
                 ),
               ],

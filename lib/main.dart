@@ -15,12 +15,13 @@ class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: MyHomePage(),
-        theme: ThemeData(
-            primaryColor: Colors.deepPurple,
-            colorScheme: ColorScheme.fromSwatch(accentColor: Colors.amber),
-            fontFamily: 'Quicksand'));
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+      theme: ThemeData(
+          primaryColor: Colors.deepPurple,
+          colorScheme: ColorScheme.fromSwatch(accentColor: Colors.amber),
+          fontFamily: 'Quicksand'),
+    );
   }
 }
 
