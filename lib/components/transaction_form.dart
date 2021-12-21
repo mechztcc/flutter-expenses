@@ -23,8 +23,6 @@ class _TransactionFormState extends State<TransactionForm> {
     final title = _titleController.text;
     final value = double.tryParse(_valueController.text) ?? 0;
 
-    DateTime _selectedDate = DateTime.now();
-
     if (title.isEmpty || value <= 0) {
       return;
     } else {

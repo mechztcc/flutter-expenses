@@ -33,28 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [
-    Transaction(
-        id: 't0',
-        title: 'Novo Celular',
-        value: 1000.00,
-        date: DateTime.now().subtract(Duration(days: 7))),
-    Transaction(
-        id: 't1',
-        title: 'Novo Tênis',
-        value: 310.762,
-        date: DateTime.now().subtract(Duration(days: 3))),
-    Transaction(
-        id: 't2',
-        title: 'Conta de luz',
-        value: 200.762,
-        date: DateTime.now().subtract(Duration(days: 4))),
-    Transaction(
-        id: 't2',
-        title: 'Conta de agua',
-        value: 100.762,
-        date: DateTime.now().subtract(Duration(days: 4)))
-  ];
+  final List<Transaction> _transactions = [];
 
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
